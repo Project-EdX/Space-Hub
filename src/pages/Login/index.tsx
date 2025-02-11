@@ -91,7 +91,7 @@ function Login() {
               className="flex items-center space-x-2"
             >
               <Rocket className="w-8 h-8 text-white" />
-              <span className="text-xl font-bold">CodeQuest</span>
+              <span className="text-xl font-bold">SpaceHub</span>
             </button>
           </div>
         </div>
@@ -219,7 +219,7 @@ function Login() {
 
                 <div className="space-y-4">
                   <h2 className="text-4xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                    Welcome to CodeQuest
+                    Welcome to SpaceHub
                   </h2>
                   <p className="text-xl text-gray-400">
                     Your Coding Adventure Awaits!
