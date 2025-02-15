@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { Rocket, User, Lock, Code, Trophy, Star, Brain } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../../App";
 
 function Login() {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -13,6 +14,27 @@ function Login() {
   const [floatingIcons, setFloatingIcons] = useState<
     { icon: JSX.Element; style: any }[]
   >([]);
+
+  async function loginUser(email: string, password: string) {
+    try {
+      console.log("Login details: ", email, " ", password);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email.trim(),
+        password: password.trim(),
+      });
+
+      if (error) {
+        console.error("Login failed:", error.message);
+        return { success: false, error: error.message };
+      }
+
+      console.log("Login successful:", data);
+      return { success: true, data: data };
+    } catch (error: any) {
+      console.error("Login error:", error.message);
+      return { success: false, error: error.message };
+    }
+  }
 
   const navigate = useNavigate();
   const features = [
@@ -71,9 +93,9 @@ function Login() {
     setFloatingIcons(newIcons);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
+    await loginUser(formData.email, formData.password);
   };
 
   return (
@@ -116,23 +138,23 @@ function Login() {
               <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                 <div className="space-y-4">
                   <div>
-                    <label htmlFor="username" className="sr-only">
-                      Username
+                    <label htmlFor="email" className="sr-only">
+                      Email
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <User className="h-5 w-5 text-gray-400" />
                       </div>
                       <input
-                        id="username"
-                        name="username"
+                        id="email"
+                        name="email"
                         type="text"
                         required
                         className="block w-full pl-10 pr-3 py-2 border border-white/10 rounded-lg bg-white/5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-transparent"
-                        placeholder="Enter username"
-                        value={formData.username}
+                        placeholder="Enter email"
+                        value={formData.email}
                         onChange={(e) =>
-                          setFormData({ ...formData, username: e.target.value })
+                          setFormData({ ...formData, email: e.target.value })
                         }
                       />
                     </div>

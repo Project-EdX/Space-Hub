@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import { Home, Login } from "../pages";
-import Profile from "../pages/Profile";
+import { Home, Login, Register } from "../Pages";
+import Profile from "../Pages/Profile";
 
 const AppRouter = () => {
   return (
@@ -10,6 +10,7 @@ const AppRouter = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
     </div>
