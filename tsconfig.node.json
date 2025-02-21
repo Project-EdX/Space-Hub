@@ -5,17 +5,17 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
-    /* Bundler mode */
+
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
 
-    /* Allow JavaScript Files */
+
     "allowJs": true, 
 
-    /* Linting */
+
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
