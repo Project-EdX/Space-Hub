@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { Search, Menu } from 'lucide-react';
-import StarField from './components/StarField';
-import CourseCard from './components/CourseCard';
-import SeasonCard from './components/SeasonCard';
+import StarField from '../../components/StarField';
+import CourseCard from '../../components/CourseCard';
+import SeasonCard from '../../components/SeasonCard';
 
 const courses = [
   {
